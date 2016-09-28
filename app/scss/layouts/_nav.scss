@@ -1,0 +1,46 @@
+/****************Main Nav********************/
+@mixin setNav($navName){
+	$navItems: 0;
+	$marginWidth: 0;
+	@if $navName == "forSmall" {
+	 	$navItems: 2;
+		$marginWidth: 1%;
+	} @else if $navName == "forLarge"{
+		$navItems: 4;
+		$marginWidth: 5%;
+  	}
+  	$itemWidth: (100% - (($navItems - 1) * $marginWidth)) / $navItems;
+
+  	display: block; 
+  	float: left; 
+  	width: $itemWidth;  
+	margin-left: $marginWidth; 
+}
+
+.main-nav{padding:10px 0;}
+.main-nav__item{
+	@include setFont("ProximaNova", 13px, 300);
+	@include setNav("forSmall")
+	color: #fff;
+	margin-top: 1px; margin-bottom: 1px;
+	text-transform: uppercase; text-align: center;
+	&:nth-child(2n+1){margin-left: 0;};
+	> a{display: block; padding: 12px 0;
+		&:hover{
+		@extend %main-nav__item--active;
+	};
+	}
+}
+.main-nav__item--active,
+%main-nav__item--active {
+	color: $text-blue;
+	background: #000;
+}
+
+@media all and (min-width: 600px){
+	.main-nav__item{
+		@include setNav("forLarge")		
+		&:first-child{margin-left: 0;}
+	}
+}
+/********************************************/

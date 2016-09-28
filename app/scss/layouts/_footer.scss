@@ -1,0 +1,18 @@
+/*****************Footer*********************/
+.main-footer{background: #000; color: #fff;}
+.main-footer__nav{list-style: none;}
+.main-footer__nav__item{
+	@include setFont("Tahoma", 13px, 300);
+	display: block; float:left; width: (100%/2);
+	padding: 10px 0; text-align: center; 
+	@media all and (min-width: 450px){
+		width: (100%/3);
+	}
+	@media all and (min-width: 650px){
+		width: (100%/4);
+	}
+	@media all and (min-width: 900px){
+		width: (100%/7);
+	}
+}
+/********************************************/

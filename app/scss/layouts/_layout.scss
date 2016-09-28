@@ -1,0 +1,44 @@
+/****************Layout**********************/
+$col-l-width: 70%;
+$col-s-width: 100% - $col-l-width;
+$column-break: 800px;
+
+body{background: #7a7a7a url(../images/body-bg.jpg) repeat 0 0;}
+
+h1{
+	@include setFont("ProximaNova", 30px, 600);
+	margin-top: 20px;}
+
+h2{ 
+	@include setFont("ProximaNova", 15px, 300);
+	text-transform: uppercase;}
+
+.clearfix{display: table; width: 100%;}
+
+.content{display: block; 
+	max-width: 1024px; width: 96%; 
+	margin-right: auto; margin-left: auto;}
+
+main{padding-bottom: 50px;}
+
+.col{background: #fff; 
+	padding: 20px 2%; 
+	> * + * {margin-top: 20px;} /*owl selector*/
+	+ .col{background: $small-col-bg;}
+	&:first-child{
+		p{
+			@include setFont("Verdana", 12px, 300);
+			line-height: calculateEm(25px);
+		}
+	}
+}
+
+@media all and (min-width: $column-break){
+	main {overflow: hidden;} /*need this for equal columns*/
+	.col{float: right; 
+		width: $col-s-width; 
+		padding-bottom: 9999px; margin-bottom: -9999px;  /*equal columns trick*/
+		&:first-child{float: left; width: $col-l-width;}
+	}
+}
+/********************************************/

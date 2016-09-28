@@ -1,0 +1,126 @@
+/****************Gallery*********************/
+@function getInnerSize($galleryItems, $galleryItemMargin, $galleryItemLength) {
+  @return $galleryItems * ($galleryItemMargin * 2 + $galleryItemLength)
+};
+
+$galleryItems: 3;
+$galleryItemLength: 80px;
+$galleryItemMargin: 3px;
+$galleryInnerSize: getInnerSize($galleryItems, $galleryItemMargin, $galleryItemLength);
+
+%thumbnails-rounded-border{
+	border-radius: 0 0 7px 7px;
+}
+
+%header-transition{
+	transition: all .5s;
+}
+
+.gallery{
+	@extend %thumbnails-rounded-border;
+	border: 1px solid $gallery-border;
+	box-shadow: 0 1px 7px 0 rgba(0,0,0,.2);}
+
+.gallery__top{
+	position: relative;
+	overflow: hidden;
+	&:hover .gallery__top__header{
+		@extend %header-transition;
+		bottom: 0; 
+	}
+}
+
+.gallery__top__header{
+	@extend %header-transition;
+	position: absolute; bottom: -100%; width: 100%;
+	> h3 {@include setFont("Arial", 12px, 600);
+			background: #000; background: rgba(0,0,0, .8); color: #fff; 
+			padding: 10px 10px; line-height: 1.4;
+			> span {
+				font-weight: 300;
+				text-transform: uppercase;
+			}
+	}
+}
+.gallery__top{position: relative;}
+.gallery__top__item {z-index: 1; position: absolute; top: 0; left: 0;
+	opacity: 0; transition: opacity .5s;}
+.gallery__top__item--visible {z-index: 10; position: relative; opacity: 1;
+	transition: opacity .5s;
+}
+.gallery__top__image{width: 100%; cursor: pointer; }
+
+.gallery__thumbnails{
+	@extend %thumbnails-rounded-border;
+	position: relative; padding: 20px 0 50px 0; 
+	background: $gallery-thumb-end; /*old browsers*/
+	background: linear-gradient($gallery-thumb-start, $gallery-thumb-end);
+	border: 3px solid #fff; }
+
+.gallery__thumbnails__inner{
+	position: relative; width: $galleryInnerSize; height: $galleryItemLength;
+	margin-left: auto; margin-right: auto; overflow: hidden;}
+
+.gallery__thumbnails__inner__slider{
+	width: 999px;
+    position: absolute;
+    transition: all .5s;
+}
+
+.gallery__thumbnails__nav{
+	position: absolute; 
+	bottom: 5px; left: 50%;
+	color: #fff; font-size: 4em; line-height: 1;
+	display: block; width: 30px; 
+	text-align: center;}
+
+.gallery__thumbnails__nav__prev{margin-left: -40px;}
+.gallery__thumbnails__nav__next{margin-left: 10px;}
+
+.gallery__thumbnails__item{ 
+	float: left; display: block;
+	 width: $galleryItemLength; margin: 0 $galleryItemMargin;
+	> img {width: 100%;}
+}
+
+.gallery__thumbnails__item--active{
+	border: 2px solid $text-blue;}
+
+@mixin mediaChanges($galleryItemLength,$galleryItemMargin, $galleryInnerSize ) {
+	.gallery__thumbnails__inner{
+		width: $galleryInnerSize; height: $galleryItemLength;}
+
+	.gallery__thumbnails__item{ 
+		 width: $galleryItemLength; margin: 0 $galleryItemMargin;}
+}
+
+@media all and (min-width: 450px){
+	.gallery__thumbnails{
+		text-align: center; 
+		padding-bottom: 20px;}
+
+	.gallery__thumbnails > * {
+		display: inline-block; position: relative;
+		vertical-align: middle;
+	}
+
+	.gallery__thumbnails__nav{
+		margin: 0; left: auto; bottom: auto;
+		height: $galleryItemLength;}
+}
+
+@media all and (min-width: 600px){
+	$galleryItems: 4;
+	$galleryItemLength: 95px;
+	$galleryItemMargin: 3px;
+	$galleryInnerSize: getInnerSize($galleryItems, $galleryItemMargin, $galleryItemLength);
+	@include mediaChanges($galleryItemLength,$galleryItemMargin, $galleryInnerSize);
+}
+
+@media all and (min-width: 1000px){
+	$galleryItems: 6;
+	$galleryItemLength: 85px;
+	$galleryItemMargin: 3px;
+	$galleryInnerSize: getInnerSize($galleryItems, $galleryItemMargin, $galleryItemLength);
+	@include mediaChanges($galleryItemLength,$galleryItemMargin, $galleryInnerSize);
+}

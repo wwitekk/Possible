@@ -1,0 +1,30 @@
+{
+  "name": "wp-slider",
+  "version": "1.0.0",
+  "description": "Simple jQuery slider",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wwitekk/wp-slider.git"
+  },
+  "author": "wp",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wwitekk/wp-slider/issues"
+  },
+  "homepage": "https://github.com/wwitekk/wp-slider#readme",
+  "devDependencies": {
+    "browser-sync": "^2.16.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-if": "^2.0.1",
+    "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^2.0.0",
+    "gulp-useref": "^3.1.2"
+  }
+}

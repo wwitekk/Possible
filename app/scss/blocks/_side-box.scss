@@ -1,0 +1,30 @@
+/*******************Side-box*****************/
+.side-box{color: $text-blue;}
+.side-box * + *{margin-top: 10px;}
+.side-box__marker {border: none; border-top: 2px solid $text-blue; 
+	width: 50%; display: none; 
+	text-align: left;/*for ie and edge*/}
+.side-box__title {
+	@include setFont("ProximaNova", 14px, 600);
+	margin-top: 5px;}	
+.side-box__image {width: 100%;}
+.side-box-text{
+	@include setFont("Verdana", 11px, 300);
+}
+
+@media all and (min-width: 500px) and (max-width: ($column-break - 1)){
+	$side-box-image-width: 40%;
+	.side-box__content > *{display: inline-block; vertical-align: middle;}
+	.side-box__image{width: $side-box-image-width;}
+	.side-box-text{
+		width: 100% - $side-box-image-width - 1; 
+		padding-left: 1%;
+		margin-top: 0;
+	}
+}
+
+@media all and (min-width: $column-break){
+	.side-box{margin-top: 85px; }
+	.side-box__marker {display: block;}
+}
+/********************************************/

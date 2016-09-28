@@ -1,0 +1,13 @@
+/****************Header**********************/
+.main-header{padding: 43px 0 13px 0; 
+	border-bottom: 1px solid #333;
+	background: #3a3a3a; /*for old browsers*/
+	background: rgba(0,0,0, .4);
+	box-shadow: 0px 2px 12px 0px rgba(0,0,0,0.75);}
+.main-header__content{position: relative;}
+.main-header__date{
+	@include setFont("Arial", 12px, 600);
+	float: right; color: $text-grey;
+	position: absolute; right: 0; bottom: 0;}
+.main-header__logo{vertical-align: initial;}
+/********************************************/
